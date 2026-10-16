@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="Mira Atelier — персональный ИИ-компаньон с характером, памятью и быстрыми облачными ответами.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Mira Atelier — твой ИИ-компаньон</title>
+  <link rel="icon" href="/assets/mira-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="app-frame">
+    <aside class="sidebar" id="sidebar" aria-label="История разговоров">
+      <div class="side-head">
+        <a class="brand" href="/" aria-label="Mira Atelier — главная">
+          <span class="brand-mark">m<span>✳</span></span>
+          <span class="brand-word">mira <b>atelier</b><small>YOUR PERSONAL AI</small></span>
+        </a>
+        <button class="close-sidebar icon-plain" id="closeSidebar" aria-label="Закрыть меню">×</button>
+      </div>
+      <button class="new-chat" id="newChat"><span class="plus">＋</span><span>Новый разговор</span><kbd>⌘ K</kbd></button>
+      <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"></circle><path d="m16 16 4.3 4.3"></path></svg><input id="searchChats" type="search" placeholder="Найти в истории…" autocomplete="off"><kbd>/</kbd></label>
+      <div class="history-head"><span>НЕДАВНИЕ</span><span id="chatCount">0</span></div>
+      <div class="chat-list" id="chatList"></div>
+      <div class="empty-history" id="emptyHistory">Здесь появятся твои разговоры.</div>
+      <div class="sidebar-bottom">
+        <div class="mini-avatar"><img src="/assets/mira-portrait.svg" alt=""></div>
+        <div class="profile-copy"><b>Мира</b><small><span class="green-dot"></span> Облачный режим</small></div>
+        <button id="sideSettings" class="icon-plain settings-small" aria-label="Настройки">⚙</button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button id="openSidebar" class="icon-plain mobile-menu" aria-label="Открыть историю">☰</button>
+        <div class="crumb"><span class="crumb-over">WORKSPACE</span><span class="crumb-sep">/</span><b id="currentTitle">Новый разговор</b></div>
+        <div class="top-actions">
+          <div class="model-badge"><span class="live-pip" id="statusPip"></span><span id="statusText">Нужна настройка</span></div>
+          <button id="openSettings" class="settings-button" aria-label="Настройки"><span>☼</span><span class="settings-label">Настройки</span></button>
+        </div>
+      </header>
+
+      <div class="conversation-scroll" id="conversationScroll">
+        <section class="welcome" id="welcome">
+          <div class="welcome-topline"><span>ВСТРЕЧАЙСЯ С ИДЕЯМИ</span><span class="topline-rule"></span><span>№ 001</span></div>
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <div class="little-tag"><span class="tag-dot"></span> ТВОЙ ИИ-КОМПАНЬОН</div>
+              <h1>Не просто<br>ответы. <em>Диалог.</em></h1>
+              <p class="hero-description">Я Мира — любопытная, честная и немного творческая. Помогу разобраться в сложном, придумать новое или просто поддержать беседу.</p>
+              <div class="hero-signature"><span class="signature-line"></span><span>Рада знакомству</span><span class="signature-spark">✳</span></div>
+            </div>
+            <div class="hero-art">
+              <div class="art-sticker sticker-a">hello!</div>
+              <div class="art-sticker sticker-b">✳ 24/7-ish</div>
+              <div class="portrait-frame"><div class="portrait-backdrop"></div><img src="/assets/mira-portrait.svg" alt="Иллюстрация Миры" class="hero-portrait"><span class="portrait-index">M / 01</span></div>
+              <div class="art-caption"><span>Мира, твой собеседник</span><span>© твоё пространство</span></div>
+            </div>
+          </div>
+          <div class="ideas-head"><div><span class="section-overline">С ЧЕГО НАЧНЁМ?</span><h2>Выбери направление</h2></div><span class="ideas-count">03 / START</span></div>
+          <div class="prompt-grid">
+            <button class="prompt-card card-blue" data-prompt="Привет, Мира! Расскажи о себе: какой у тебя характер и что тебе интересно?">
+              <span class="prompt-num">01 — ЗНАКОМСТВО</span><span class="prompt-icon">↗</span><b>Давай познакомимся</b><small>Немного о тебе и обо мне</small>
+            </button>
+            <button class="prompt-card card-lime" data-prompt="Я хочу сделать красивый сайт, но пока начинающий разработчик. Предложи проект и распиши первые шаги.">
+              <span class="prompt-num">02 — СОЗДАНИЕ</span><span class="prompt-icon">✳</span><b>Соберём идею</b><small>Веб-проекты, код и творчество</small>
+            </button>
+            <button class="prompt-card card-peach" data-prompt="Расскажи мне что-нибудь по-настоящему удивительное о чёрных дырах, простым языком.">
+              <span class="prompt-num">03 — ЛЮБОПЫТСТВО</span><span class="prompt-icon">◌</span><b>Удиви меня</b><small>Космос, технологии и открытия</small>
+            </button>
+          </div>
+          <div class="local-first-note"><span>✳</span><p>История остаётся в этом браузере. Для ответов Мира подключается к облачной модели — тяжёлые файлы не скачиваются на телефон.</p></div>
+        </section>
+        <section class="messages" id="messages" aria-live="polite" aria-label="Переписка"></section>
+      </div>
+
+      <footer class="composer-area">
+        <div class="composer-wrap">
+          <div class="composer-hint"><span class="hint-spark">✳</span><span id="composerHint">Напиши, что у тебя на уме</span><span class="hint-key">SHIFT + ENTER — новая строка</span></div>
+          <form class="composer" id="chatForm">
+            <textarea id="messageInput" rows="1" placeholder="Спроси Миру о чём угодно…" aria-label="Сообщение" autocomplete="off" maxlength="12000"></textarea>
+            <button id="sendButton" class="send-button" type="submit" aria-label="Отправить сообщение"><span>Отправить</span><i>↗</i></button>
+          </form>
+          <div class="composer-bottom"><span>ENTER — отправить</span><span class="bottom-center"><span class="mini-shield">◇</span> Умные ответы без загрузки модели на устройство</span><span>GEMINI · CLOUD</span></div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="mobile-scrim" id="mobileScrim"></div>
+  <div class="modal-backdrop hidden" id="settingsBackdrop">
+    <section class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <header class="modal-header"><div><span class="section-overline">СДЕЛАЙ ПРОСТРАНСТВО СВОИМ</span><h2 id="settingsTitle">Настройки Миры</h2></div><button class="modal-close" id="closeSettings" aria-label="Закрыть">×</button></header>
+      <div class="settings-intro"><span class="intro-mark">✳</span><p>Мира отвечает через облачную модель. Секретный ключ хранится на стороне сервера, а не в коде сайта.</p></div>
+      <label class="field-label" for="accessCode">Код доступа к твоему сайту</label>
+      <input class="field-input" id="accessCode" type="password" autocomplete="off" placeholder="Код, заданный в настройках Netlify">
+      <p class="field-help">Это не ключ Gemini. Код нужен, чтобы посторонние не могли пользоваться твоим подключением. Секрет задаётся в Netlify как <code>MIRA_ACCESS_CODE</code>.</p>
+      <div class="field-two">
+        <div><label class="field-label" for="modelSelect">Модель</label><select class="field-input" id="modelSelect"><option value="gemini-3.5-flash-lite">Flash-Lite · быстрее и экономичнее</option><option value="gemini-3.8-flash">Flash · сложные задачи</option></select></div>
+      </div>
+      <label class="field-label" for="personality">Характер Миры</label>
+      <textarea class="field-input field-area" id="personality" rows="4" maxlength="2500"></textarea>
+      <label class="field-label" for="memoryNotes">Заметки памяти</label>
+      <textarea class="field-input field-area" id="memoryNotes" rows="3" maxlength="1800" placeholder="Интересы, текущие проекты, стиль общения…"></textarea>
+      <label class="history-toggle"><input id="saveHistory" type="checkbox" checked><span class="toggle-visual"></span><span><b>Сохранять историю</b><small>Чаты хранятся только в этом браузере</small></span></label>
+      <div class="modal-footer"><button class="text-danger" id="clearAll" type="button">Очистить историю</button><button class="save-button" id="saveSettings" type="button">Сохранить настройки <span>↗</span></button></div>
+      <p class="modal-footnote">Сообщения, отправленные модели, обрабатываются Google Gemini. Не отправляй пароли и чувствительные данные.</p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
